@@ -6,8 +6,8 @@
 #define Relay1            D0
 
 
-#define WLAN_SSID       "ghostrider"             // Your SSID
-#define WLAN_PASS       "sk123456"        // Your password
+#define WLAN_SSID       "Realme 3"             // Your SSID
+#define WLAN_PASS       "ashish123"        // Your password
 
 /************************* Adafruit.io Setup *********************************/
 

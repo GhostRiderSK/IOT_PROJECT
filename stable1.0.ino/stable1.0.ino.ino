@@ -3,11 +3,11 @@
 #include "Adafruit_MQTT.h"
 #include "Adafruit_MQTT_Client.h"
 
-#define Relay1            D0
+#define light            D1
 
 
-#define WLAN_SSID       "Realme 3"             // Your SSID
-#define WLAN_PASS       "ashish123"        // Your password
+#define WLAN_SSID       "ghostrider"             // Your SSID
+#define WLAN_PASS       "sk12345678"        // Your password
 
 /************************* Adafruit.io Setup *********************************/
 
@@ -30,7 +30,7 @@ Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO
 
 
 // Setup a feed called 'onoff' for subscribing to changes.
-Adafruit_MQTT_Subscribe Light1 = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME"/feeds/Relay1"); // FeedName
+Adafruit_MQTT_Subscribe Light1 = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME"/feeds/value"); // FeedName
 
 
 
@@ -40,7 +40,7 @@ void MQTT_connect();
 void setup() {
   Serial.begin(115200);
 
-  pinMode(Relay1, OUTPUT);
+  pinMode(light, OUTPUT);
  
   
   // Connect to WiFi access point.
@@ -76,7 +76,7 @@ void loop() {
       Serial.print(F("Got: "));
       Serial.println((char *)Light1.lastread);
       int Light1_State = atoi((char *)Light1.lastread);
-      digitalWrite(Relay1, Light1_State);
+      analogWrite(light, Light1_State);
       
     }
 
